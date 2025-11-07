@@ -3,118 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مستندات APAL</title>
-   
-</header>
+    <title>مستندات | APAL</title>
+    
     <!-- فونت‌ها -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- فایل استایل (می‌توانیم از استایل Playground استفاده کنیم) -->
+    <!-- فایل استایل -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="animated-bg"></div>
+
     <header class="main-header">
-        <h1><a href="index.html" style="text-decoration: none; color: inherit;">APAL</a></h1>
-        <p class="slogan">کتاب راهنما</p>
+        <div class="header-content">
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="logo.jpg" alt="APAL Logo" class="logo">
+                <div class="header-text">
+                    <h1>APAL</h1>
+                </div>
+            </a>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Playground</a>
+            <a href="docs.html" class="nav-link active">مستندات</a>
+        </nav>
     </header>
 
-    <main class="docs-container">
-        <article>
+    <div class="docs-container">
+        <aside class="docs-sidebar glass-morphism">
+            <nav class="sidebar-nav">
+                <h3>شروع سریع</h3>
+                <ul>
+                    <li><a href="#introduction">معرفی APAL</a></li>
+                    <li><a href="#quick-start">نوشتن اولین کد</a></li>
+                </ul>
+                <h3>مفاهیم اصلی</h3>
+                <ul>
+                    <li><a href="#variables">متغیرها</a></li>
+                    <li><a href="#logic">منطق و شرط</a></li>
+                    <li><a href="#loops">حلقه‌های تکرار</a></li>
+                    <li><a href="#functions">توابع</a></li>
+                </ul>
+                <h3>مثال‌های پیشرفته</h3>
+                <ul>
+                    <li><a href="#web-example">کار با وب</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
             <section id="introduction">
-                <h2>APAL چیست؟</h2>
+                <h2>معرفی APAL</h2>
                 <p>
-                    APAL یک زبان برنامه‌نویسی ساده و خوانا است که برای سختی گرفتن یادگیری کدنویسی برای فارسی‌زبانان و پشتو‌زبانان طراحی شده است. هدف ما این است که با استفاده از کلمات و ساختارهای آشنا، دیوارهای ورود به دنیای برنامه‌نویسی را برداریم.
+                    <strong>APAL (Afghan Programming Language)</strong> یک زبان برنامه‌نویسی مدرن، ساده و قدرتمند است که با هدف حذف موانع ورود به دنیای تکنولوژی برای فارسی‌زبانان و پشتو‌زبانان طراحی شده است. ما معتقدیم که زبان برنامه‌نویسی باید طبیعی و خوانا باشد، نه یک کد رمزگذاری شده.
                 </p>
                 <p>
-                    کدهای نوشته شده با APAL توسط موتور ترجمه ما به جاوااسکریپت تبدیل می‌شوند تا در تمام مرورگرهای وب قابل اجرا باشند.
+                    کدهای نوشته شده با APAL توسط موتور ترجمه قدرتمند ما به جاوااسکریپت تبدیل می‌شوند تا در تمام مرورگرهای مدرن وب قابل اجرا باشند. این یعنی شما با یادگیری APAL، در حال یادگیری یکی از محبوب‌ترین زبان‌های دنیا نیز هستید.
                 </p>
             </section>
 
             <section id="quick-start">
-                <h2>شروع سریع</h2>
-                <p>اولین کد خود را در کمتر از یک دقیقه بنویسید. این کد یک پیام ساده را در کنسول مرورگر چاپ می‌کند:</p>
-                <pre><code class="language-afghanscript">چاپ کن به "سلام، دنیا!"</code></pre>
+                <h2>نوشتن اولین کد</h2>
+                <p>شروع کار با APAL به سادگی نوشتن یک جمله است. این کد، یک پیام ساده را در کنسول مرورگر شما چاپ می‌کند:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-apal">چاپ کن به "سلام، دنیا! من از APAL استفاده می‌کنم."</code></pre>
+                </div>
+                <p>کد جاوااسکریپت تولید شده توسط موتور APAL:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-javascript">console.log("سلام، دنیا! من از APAL استفاده می‌کنم.");</code></pre>
+                </div>
+            </section>
+
+            <section id="variables">
+                <h2>متغیرها</h2>
+                <p>برای ذخیره اطلاعات در برنامه، از کلمه‌ی کلیدی <code>ذخیره کن</code> استفاده می‌کنیم. برای اختصاص دادن یک مقدار، از کلمه‌ی <code>مساوی</code> بهره می‌بریم.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-apal">// ذخیره یک متن
+ذخیره کن نام کاربر مساوی "سارا"
+
+// ذخیره یک عدد
+ذخیره کن سن کاربر مساوی ۲۵
+
+// ذخیره نتیجه یک محاسبه
+ذخیره کن سن بعدی مساوی سن کاربر جمع ۱</code></pre>
+                </div>
                 <p>کد جاوااسکریپت تولید شده:</p>
-                <pre><code class="language-javascript">console.log("سلام، دنیا!");</code></pre>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-javascript">let نام_کاربر = "سارا";
+let سن_کاربر = 25;
+let سن_بعدی = سن_کاربر + 1;</code></pre>
+                </div>
             </section>
 
-            <section id="core-concepts">
-                <h2>مفاهیم اصلی</h2>
-                
-                <h3>۱. داده‌ها و متغیرها</h3>
-                <p>برای ذخیره اطلاعات از کلمه‌ی <code>ذخیره کن</code> و برای انتساب مقدار از <code>مساوی</code> استفاده می‌کنیم.</p>
-                <pre><code class="language-afghanscript">ذخیره کن سن مساوی ۲۵
-ذخیره کن نام مساوی "کریم"</code></pre>
-                <p>عملگرهای ریاضی مانند <code>جمع</code>، <code>منفی</code> و <code>ضربدر</code> به سادگی قابل استفاده هستند.</p>
-                <pre><code class="language-afghanscript">ذخیره کن مجموع مساوی سن جمع ۵</code></pre>
-
-                <h3>۲. منطق و کنترل جریان</h3>
-                <p>برای تصمیم‌گیری از ساختار <code>اگر</code> و <code>گرنه</code> استفاده می‌کنیم. بلوک‌های کد با استفاده از تورفتگی (۴ فاصله) مشخص می‌شوند.</p>
-                <pre><code class="language-afghanscript">اگر سن بزرگتر از ۱۸
-    چاپ کن به "شما بزرگسال هستید"
+            <section id="logic">
+                <h2>منطق و شرط</h2>
+                <p>برای تصمیم‌گیری در برنامه، از ساختار <code>اگر</code> و <code>گرنه</code> استفاده می‌کنیم. بلوک‌های کد با استفاده از تورفتگی (۴ فاصله) مشخص می‌شوند.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-apal">اگر سن کاربر بزرگتر از ۱۸
+    چاپ کن به "کاربر بزرگسال است و می‌تواند وارد شود."
 گرنه
-    چاپ کن به "شما نوجوان هستید"</code></pre>
-                
-                <p>برای تکرار یک کار، از حلقه‌های <code>تکرار کن روی</code> استفاده می‌کنیم.</p>
-                <pre><code class="language-afghanscript">تکرار کن روی هر شماره از ۱ تا ۵
-    چاپ کن به شماره</code></pre>
-
-                <h3>۳. توابع</h3>
-                <p>برای سازماندهی بهتر کد، می‌توانید توابع خود را با کلمه‌ی <code>کار</code> تعریف کنید.</p>
-                <pre><code class="language-afghanscript">کار سلام بده با نام
-    چاپ کن به "درود بر تو" و نام
-
-سلام بده با "سارا"</code></pre>
+    چاپ کن به "دسترسی برای کاربران زیر ۱۸ سال مجاز نیست."</code></pre>
+                </div>
+                <p>کد جاوااسکریپت تولید شده:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-javascript">if (سن_کاربر > 18) {
+    console.log("کاربر بزرگسال است و می‌تواند وارد شود.");
+} else {
+    console.log("دسترسی برای کاربران زیر ۱۸ سال مجاز نیست.");
+}</code></pre>
+                </div>
             </section>
 
-            <section id="examples">
-                <h2>مثال‌های کامل</h2>
-                <p>در اینجا چند مثال عملی برای دیدن قدرت زبان APAL آورده شده است.</p>
-              <hr>
-                مثال اول:
-ذخیره کن نام مساوی "کریم"
+            <section id="loops">
+                <h2>حلقه‌های تکرار</h2>
+                <p>برای انجام یک کار به صورت مکرر، از حلقه‌های <code>تکرار کن روی</code> استفاده می‌کنیم. این حلقه برای شمارش اعداد یا پیمایش یک لیست ایده‌آل است.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-apal">تکرار کن روی هر شماره از ۱ تا ۵
+    چاپ کن به "شماره:" و شماره</code></pre>
+                </div>
+                <p>کد جاوااسکریپت تولید شده:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-javascript">for (let شماره = 1; شماره <= 5; شماره++) {
+    console.log("شماره:" + شماره);
+}</code></pre>
+                </div>
+            </section>
 
+            <section id="functions">
+                <h2>توابع</h2>
+                <p>برای سازماندهی بهتر کد و جلوگیری از تکرار، می‌توانید توابع خود را با کلمه‌ی کلیدی <code>کار</code> تعریف کنید. توابع به شما اجازه می‌دهند یک قطعه کد را نام‌گذاری کرده و آن را هر زمان که خواستید، فراخوانی کنید.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-apal">// تعریف یک تابع برای محاسبه مجموع دو عدد
+کار مجموع را محاسبه کن با عدد اول و عدد دوم
+    ذخیره کن نتیجه مساوی عدد اول جمع عدد دوم
+    برگردان نتیجه
 
-چاپ کن به "سلام" و نام
-<hr>
-مثال دوم : 
-ذخیره کن سن مساوی ۱۶
+// فراخوانی تابع و ذخیره نتیجه آن
+ذخیره کن جمع نهایی مساوی مجموع را محاسبه کن با ۱۰ و ۲۰
+چاپ کن به "مجموع نهایی برابر است با:" و جمع نهایی</code></pre>
+                </div>
+                <p>کد جاوااسکریپت تولید شده:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-javascript">function مجموع_را_محاسبه_کن(عدد_اول, عدد_دوم) {
+    let نتیجه = عدد_اول + عدد_دوم;
+    return نتیجه;
+}
 
-اگر سن بزرگتر از ۱۸
-    چاپ کن به "شما می‌توانید ورود کنید"
-گرنه
-چاپ کن به "متاسفم، شما برای ورود کم سن دارید"
-<hr>
-     مثال سوم :
-تکرار کن روی هر شماره از ۱ تا ۵
-    چاپ کن به شماره      
-    <hr> 
-    مثال چهارم:
-ذخیره کن مجموع مساوی ۰
+let جمع_نهایی = مجموع_را_محاسبه_کن(10, 20);
+console.log("مجموع نهایی برابر است با:" + جمع_نهایی);</code></pre>
+                </div>
+            </section>
 
-تکرار کن روی هر عدد از ۱ تا ۱۰
-    تغییر بده مجموع مساوی مجموع جمع عدد
+            <section id="web-example">
+                <h2>مثال پیشرفته: کار با وب</h2>
+                <p>قدرت واقعی APAL در سادگی تعامل با عناصر وب است. این مثال نشان می‌دهد چگونه می‌توانید با یک کلیک روی یک دکمه، متن یک عنوان را تغییر دهید.</p>
+                <p>فرض کنید این کد HTML را دارید:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-html">&lt;h1 id="main-title"&gt;سلام دنیا&lt;/h1&gt;
+&lt;button id="change-title-btn"&gt;عنوان را تغییر بده&lt;/button&gt;</code></pre>
+                </div>
+                <p>کد APAL برای مدیریت این عناصر:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-apal">کار عنوان را تغییر بده
+    تغییر بده متن بگیر با آیدی "main-title" مساوی "سلام از APAL!"
 
-چاپ کن به "مجموع اعداد از ۱ تا ۱۰ برابر است با:"
-چاپ کن به مجموع
-<hr>
-مثال پنجم:
-کار سلام بده با نام
-    چاپ کن به "درود بر تو" و نام
+وقتی کلیک شد روی بگیر با آیدی "change-title-btn"
+    عنوان را تغییر بده</code></pre>
+                </div>
+                <p>کد جاوااسکریپت تولید شده:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">کپی</button>
+                    <pre><code class="language-javascript">function عنوان_را_تغییر_بده() {
+    document.getElementById("main-title").innerText = "سلام از APAL!";
+}
 
-سلام بده با "سارا"
-سلام بده با "احمد"
-</section>
+document.getElementById("change-title-btn").addEventListener("click", عنوان_را_تغییر_بده);</code></pre>
+                </div>
+            </section>
 
-        </article>
-    </main>
+        </main>
+    </div>
 
     <footer class="main-footer">
-        <p>ساخته شده توسط خالد عظیمی  برای افغانستان</p>
+        <p>ساخته شده با ❤️ برای افغانستان</p>
     </footer>
 
+    <script>
+        function copyToClipboard(button) {
+            const codeBlock = button.nextElementSibling;
+            const textToCopy = codeBlock.textContent;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'کپی شد!';
+                button.style.color = '#4ade80';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.color = '';
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>

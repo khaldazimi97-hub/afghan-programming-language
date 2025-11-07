@@ -3,59 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APAL | Playground</title>
+    <title>APAL | Afghan Programming Language</title>
     
-    <!-- فونت‌های فارسی و کدنویسی -->
+    <!-- فونت‌ها -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- فایل استایل -->
     <link rel="stylesheet" href="style.css">
-    <!-- در index.html -->
-<!-- در index.html و docs.html -->
-<header class="main-header">
-    <div class="header-content">
-        <img src="logo.jpg" alt="APAL Logo" class="logo" width="126" height="126" alig="leaft" style="position: absolute; top: 20px; left: 20px;">
-        <img src="download.jpg" alt="APAL Logo" class="logo" width="126" height="126" alig="leaft" style="position: absolute; top: 20px; right: 20px;">
-        <div class="header-text">
-            <h1>APAL</h1>
-            <p class="slogan">قدرت خلق دیجیتال به زبان هر افغان</p>
-        </div>
-    </div>
-    <nav>
-        <a href="index.html">Playground</a>
-        <a href="docs.html">مستندات</a>
-    </nav>
-</header>
 </head>
 <body>
 
+    <div class="animated-bg"></div>
+
     <header class="main-header">
-        <h1>APAL</h1>
-        <p class="slogan">قدرت خلق دیجیتال به زبان هر افغان</p>
+        <div class="header-content">
+            <img src="logo.jpg" alt="APAL Logo" class="logo">
+            <div class="header-text">
+                <h1>APAL</h1>
+                <p class="slogan">قدرت خلق دیجیتال به زبان هر افغان</p>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link active">Playground</a>
+            <a href="docs.html" class="nav-link">مستندات</a>
+        </nav>
     </header>
 
     <main class="playground-container">
-        <section class="editor-pane input-pane">
+        <section class="editor-pane input-pane glass-morphism">
             <h2>کد APAL خود را بنویسید</h2>
             <textarea id="input-code" placeholder="مثال:
-ذخیره کن نام مساوی 'دنیا'
-چاپ کن به 'سلام' و نام" spellcheck="false"></textarea>
+کار سلام بده با نام
+    چاپ کن به 'درود بر تو' و نام
+
+سلام بده با 'دنیا'" spellcheck="false"></textarea>
         </section>
 
-        <section class="editor-pane output-pane">
+        <section class="editor-pane output-pane glass-morphism">
             <h2>کد جاوااسکریپت تولید شده</h2>
             <div class="output-actions">
-                <button id="translate-btn">ترجمه کن</button>
-                <button id="copy-btn">کپی کن</button>
+                <button id="translate-btn" class="glow-button">
+                    <span class="button-text">ترجمه کن</span>
+                    <span class="button-glow"></span>
+                </button>
+                <button id="copy-btn" class="secondary-button">کپی کن</button>
             </div>
             <textarea id="output-code" readonly placeholder="کد جاوااسکریپت اینجا نمایش داده خواهد شد..." spellcheck="false"></textarea>
         </section>
     </main>
 
     <footer class="main-footer">
-        <p>ساخته شده توسط خالد عظیمی  برای افغانستان</p>
+        <p>ساخته شده با ❤️ برای افغانستان</p>
     </footer>
 
     <!-- فایل جاوااسکریپت -->

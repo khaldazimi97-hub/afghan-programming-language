@@ -1,14 +1,14 @@
-/* متغیرهای اصلی برای تم */
+/* متغیرهای اصلی برای تم کوانتومی */
 :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --border-color: #30363d;
-    --text-primary: #c9d1d9;
-    --text-secondary: #8b949e;
-    --accent-color: #58a6ff;
-    --accent-hover: #79c0ff;
-    --font-code: 'Fira Code', monospace;
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #1a1f2e;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #e4e4e7;
+    --text-secondary: #a1a1aa;
+    --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #667eea;
+    --font-code: 'JetBrains Mono', monospace;
     --font-ui: 'Vazirmatn', 'Inter', sans-serif;
 }
 
@@ -23,24 +23,83 @@ body {
     font-family: var(--font-ui);
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: 1.7;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* پس‌زمینه متحرک */
+.animated-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(45deg, #0a0e1a, #1a1f2e, #2d1b69, #0a0e1a);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* افکت شیشه‌مورفیسم */
+.glass-morphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-morphism:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
 }
 
 /* هدر */
 .main-header {
-    text-align: center;
-    padding: 2rem 1rem;
-    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(10, 14, 26, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.main-header h1 {
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.header-text h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.2rem;
 }
 
 .slogan {
@@ -48,95 +107,145 @@ body {
     color: var(--text-secondary);
 }
 
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--accent-gradient);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--text-primary);
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
 /* محیط اصلی */
 .playground-container {
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 2rem;
+    padding: 2rem;
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
 }
 
 .editor-pane {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
 }
 
 .editor-pane h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-primary);
 }
 
 textarea {
     flex-grow: 1;
     width: 100%;
-    background-color: var(--bg-tertiary);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
     color: var(--text-primary);
     font-family: var(--font-code);
     font-size: 0.9rem;
-    padding: 1rem;
+    padding: 1.5rem;
     resize: none;
     outline: none;
-    transition: border-color 0.2s ease-in-out;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 textarea:focus {
     border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
 }
 
-/* دکمه‌ها */
+/* دکمه‌های قدرتمند */
 .output-actions {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-#translate-btn, #copy-btn {
-    background-color: var(--accent-color);
+.glow-button {
+    position: relative;
+    background: var(--accent-gradient);
     color: white;
     border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 6px;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
     font-family: var(--font-ui);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#translate-btn:hover, #copy-btn:hover {
-    background-color: var(--accent-hover);
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-#translate-btn:active, #copy-btn:active {
-    transform: scale(0.98);
+.glow-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
-#copy-btn {
-    background-color: var(--bg-tertiary);
-    border: 1px solid var(--border-color);
+.glow-button:hover .button-glow {
+    opacity: 1;
 }
 
-#copy-btn:hover {
-    background-color: var(--border-color);
+.secondary-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 /* فوتر */
 .main-footer {
     text-align: center;
     padding: 1.5rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--glass-border);
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
@@ -147,23 +256,160 @@ textarea:focus {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
-    .main-header h1 {
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .header-content h1 {
         font-size: 2rem;
     }
 }
-/* در style.css */
-.main-header nav {
-    margin-top: 1rem;
+/* استایل‌های صفحه مستندات */
+.docs-container {
+    display: flex;
+    flex-grow: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 2rem;
 }
 
-.main-header nav a {
+.docs-sidebar {
+    width: 280px;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+    padding: 1.5rem;
+}
+
+.sidebar-nav h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar-nav h3:first-child {
+    margin-top: 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-nav ul li a {
     color: var(--text-secondary);
     text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 500;
-    transition: color 0.2s;
+    font-size: 0.95rem;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.main-header nav a:hover {
-    color: var(--accent-color);
+.sidebar-nav ul li a:hover {
+    color: var(--text-primary);
+    background-color: var(--glass-bg);
+}
+
+.docs-content {
+    flex-grow: 1;
+    max-width: 800px;
+}
+
+.docs-content section {
+    margin-bottom: 3rem;
+}
+
+.docs-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.docs-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.docs-content p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.docs-content code {
+    background-color: rgba(102, 126, 234, 0.2);
+    color: #a5b4fc;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+}
+
+.code-block {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    color: #e4e4e7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+/* واکنش‌گرایی برای موبایل */
+@media (max-width: 1024px) {
+    .docs-container {
+        flex-direction: column;
+    }
+    .docs-sidebar {
+        width: 100%;
+        position: static;
+        order: 2;
+    }
+    .docs-content {
+        order: 1;
+    }
 }
