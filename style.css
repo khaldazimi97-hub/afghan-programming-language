@@ -1,0 +1,169 @@
+/* متغیرهای اصلی برای تم */
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+    --accent-hover: #79c0ff;
+    --font-code: 'Fira Code', monospace;
+    --font-ui: 'Vazirmatn', 'Inter', sans-serif;
+}
+
+/* تنظیمات کلی */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-ui);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* هدر */
+.main-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.slogan {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* محیط اصلی */
+.playground-container {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.editor-pane {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-pane h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+textarea {
+    flex-grow: 1;
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    padding: 1rem;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+textarea:focus {
+    border-color: var(--accent-color);
+}
+
+/* دکمه‌ها */
+.output-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#translate-btn, #copy-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+#translate-btn:hover, #copy-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+#translate-btn:active, #copy-btn:active {
+    transform: scale(0.98);
+}
+
+#copy-btn {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+}
+
+#copy-btn:hover {
+    background-color: var(--border-color);
+}
+
+/* فوتر */
+.main-footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* واکنش‌گرایی برای موبایل */
+@media (max-width: 768px) {
+    .playground-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .main-header h1 {
+        font-size: 2rem;
+    }
+}
+/* در style.css */
+.main-header nav {
+    margin-top: 1rem;
+}
+
+.main-header nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.main-header nav a:hover {
+    color: var(--accent-color);
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APAL | Playground</title>
+    
+    <!-- فونت‌های فارسی و کدنویسی -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- فایل استایل -->
+    <link rel="stylesheet" href="style.css">
+    <!-- در index.html -->
+<header class="main-header">
+    <h1>APAL (Afghanistan programin language)</h1>
+    <p class="slogan">قدرت خلق دیجیتال به زبان هر افغان</p>
+    <nav>
+        <a href="index.html">Playground</a>
+        <a href="docs.html">مستندات</a>
+    </nav>
+</header>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>APAL</h1>
+        <p class="slogan">قدرت خلق دیجیتال به زبان هر افغان</p>
+    </header>
+
+    <main class="playground-container">
+        <section class="editor-pane input-pane">
+            <h2>کد APAL خود را بنویسید</h2>
+            <textarea id="input-code" placeholder="مثال:
+ذخیره کن نام مساوی 'دنیا'
+چاپ کن به 'سلام' و نام" spellcheck="false"></textarea>
+        </section>
+
+        <section class="editor-pane output-pane">
+            <h2>کد جاوااسکریپت تولید شده</h2>
+            <div class="output-actions">
+                <button id="translate-btn">ترجمه کن</button>
+                <button id="copy-btn">کپی کن</button>
+            </div>
+            <textarea id="output-code" readonly placeholder="کد جاوااسکریپت اینجا نمایش داده خواهد شد..." spellcheck="false"></textarea>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>ساخته شده با ❤️ برای افغانستان</p>
+    </footer>
+
+    <!-- فایل جاوااسکریپت -->
+    <script src="app.js"></script>
+</body>
+</html>
